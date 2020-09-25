@@ -1,0 +1,21 @@
+<%- include("partials/header") %>
+
+<div class="album bg-light">
+	<div class="lead"><%= wish.title %></div>
+	<div class="item">
+		<!-- Center an image by adding the utility classes .mx-auto (margin:auto) and .d-block (display:block) -->
+		<img class="mx-auto d-block img-fluid" src="<%= wish.image %>" >
+		
+		<form href="<%= wish.link %>">
+			<button type="button" class="btn btn-success">buy</button>
+		</form>
+		
+		<a class="btn btn-success" href="<%= wish.link %>">buy</a>
+		<a class="btn btn-warning" href="/wishes/<%= wish._id %>/edit">edit</a>
+		<form id="delete" action="/wishes/<%= wish._id %>?_method=DELETE" method="POST">
+            <button type="button" class="btn btn-secondary">remove</button>
+        </form>
+	</div>
+</div>
+
+<%- include("partials/footer") %>

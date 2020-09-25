@@ -1,0 +1,25 @@
+.navbar {
+	background-color: #e3f2fd;
+}
+
+i.icon {
+    font-size: 2em;
+}
+
+.container.main {
+	padding: 16px;
+	margin-top: 80px;
+	
+}
+
+#delete {
+    display: inline;
+}
+
+.menu {
+	overflow: hidden;
+	width: 100%;
+  	top: 0;
+}
+
+
