@@ -20,6 +20,15 @@
 				<h4><a><%= campground.name %></a></h4>
 				<p><%= campground.description %></p>
 				<p><em>Submitted By <%= campground.author.username %></em></p>
+				<!-- AUTHORIZATION -->
+				<!-- hide edit and delete buttons if the user is not the one who created the campground -->
+				<!-- check if current user exits first -->
+				<% if (currentUser && campground.author.id.equals(currentUser._id)){ %>
+					<a href="/campground/<%= campground._id %>/edit" class="btn btn-xs btn-warning">Edit</a>
+					<form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-danger">Delete</button>
+					</form>
+				<% } %>
 			</div>
 		</div>
 		<div class="well">
@@ -35,6 +44,17 @@
 					<p>
 						<%= comment.text %>
 					</p>
+					<% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
+						<a class="btn btn-small btn-warning"
+						   href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+							Edit
+						</a>
+						<form class="delete-form"
+							  action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE"
+							  method="POST">
+							<input type="submit" class="btn btn-small btn-danger" value="Delete">
+						</form>
+					<% } %>
 				</div>
 			</div>
 			<% }) %>
