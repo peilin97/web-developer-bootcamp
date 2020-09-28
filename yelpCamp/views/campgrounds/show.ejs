@@ -21,7 +21,7 @@
 				<!-- AUTHORIZATION -->
 				<!-- hide edit and delete buttons if the user is not the one who created the campground -->
 				<!-- check if current user exits first -->
-				<% if (currentUser && campground.author.id.equals(currentUser._id)){ %>
+				<% if (currentUser && campground.author && campground.author.id.equals(currentUser._id)){ %>
 					<a href="/campground/<%= campground._id %>/edit" class="btn btn-xs btn-warning">Edit</a>
 					<form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
 						<button class="btn btn-danger">Delete</button>
@@ -42,7 +42,7 @@
 					<p>
 						<%= comment.text %>
 					</p>
-					<% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
+					<% if (currentUser && comment.author && comment.author.id.equals(currentUser._id)){ %>
 						<a class="btn btn-small btn-warning"
 						   href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
 							Edit
